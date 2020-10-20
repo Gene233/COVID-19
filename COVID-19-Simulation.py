@@ -96,7 +96,7 @@ class People(object):
         dt = self._round - self._timer
         # 必须先更新时钟再更新状态//Update the timer before updating the status
         # 潜伏期感染患者转确诊//Infected people in latent period become confirmed
-        d = np.random.randint(7, lp)
+        d = np.random.randint(lp/2, lp+1)
         self._timer[(self._status == 1) & ((dt == d) | (dt > lp))] = self._round
         self._status[(self._status == 1) & ((dt == d) | (dt > lp))] += 1
         # 确证患者转医院隔离//Confirmed cases move into hospital and become isolated
