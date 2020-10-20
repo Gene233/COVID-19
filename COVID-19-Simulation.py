@@ -192,9 +192,9 @@ class People(object):
 
     def update(self):
         """每一次迭代更新"""
-        self.change_state(14, 0)  # 潜伏期及医院收治响应时间//Latent period and hospital response time
-        self.affect(5)  # 病毒传染率//Virus infectious rate
         self.move(5, 2)  # 人员移动范围及流动意向//People movement range and mobility intention
+        self.affect(5)  # 病毒传染率//Virus infectious rate
+        self.change_state(14, 0)  # 潜伏期及医院收治响应时间//Latent period and hospital response time
         self._round += 1
         self.report()
 
