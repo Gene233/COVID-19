@@ -20,6 +20,7 @@ class People(object):
         self.init()
 
     def init(self):
+        # 使用高斯分布模拟人群分布//Use normal distribution to imitate people's distribution
         self._people = np.random.normal(0, 100, (self.count, 2))
         self.reset()
 
@@ -96,6 +97,7 @@ class People(object):
         dt = self._round - self._timer
         # 必须先更新时钟再更新状态//Update the timer before updating the status
         # 潜伏期感染患者转确诊//Infected people in latent period become confirmed
+        # 这里使用均匀分布随机产生个体潜伏期//Use uniform distribution to generate personal latent period
         d = np.random.randint(lp/2, lp+1)
         self._timer[(self._status == 1) & ((dt == d) | (dt > lp))] = self._round
         self._status[(self._status == 1) & ((dt == d) | (dt > lp))] += 1
